@@ -1,0 +1,44 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: teams.dmaganto.infra
+spec:
+  group: dmaganto.infra
+  scope: Namespaced
+  names:
+    kind: Team
+    singular: team
+    plural: teams
+    categories:
+    - all
+  versions:
+  - name: v1alpha1
+    served: true
+    storage: true
+    additionalPrinterColumns:
+      - name: Slack
+        type: string
+        description: Slack Channel
+        jsonPath: .spec.slackChannel
+    schema:
+      openAPIV3Schema:
+        type: object
+        properties:
+          apiVersion:
+            type: string
+          kind:
+            type: string
+          metadata:
+            type: object
+          spec:
+            properties:
+              applications:
+                type: array
+                items:
+                  type: string
+              slackChannel: 
+                type: string
+            required:
+              - applications
+              - slackChannel
+            type: object

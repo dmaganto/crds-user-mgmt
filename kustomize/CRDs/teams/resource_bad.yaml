@@ -1,0 +1,11 @@
+apiVersion: dmaganto.infra/v1alpha1
+kind: Team
+metadata:
+  name: claim
+  namespace: default
+spec: 
+  slackChannel: "claim-team"
+# Missing required field
+#  applications:
+#   - document-service
+#   - claim-service

@@ -1,0 +1,8 @@
+apiVersion: dmaganto.infra/v1alpha1
+kind: Application
+metadata:
+  name: claim-service
+  namespace: default
+spec: 
+  team: "back"
+  slackChannel: back-service

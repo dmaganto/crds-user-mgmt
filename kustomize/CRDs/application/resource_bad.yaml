@@ -1,0 +1,9 @@
+apiVersion: dmaganto.infra/v1alpha1
+kind: Application
+metadata:
+  name: document-service
+  namespace: default
+spec: 
+# Bad value
+  team: "test-bad"
+  slackChannel: claims-service

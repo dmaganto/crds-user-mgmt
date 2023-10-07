@@ -1,0 +1,14 @@
+apiVersion: dmaganto.infra/v1alpha1
+kind: Developer
+metadata:
+  name: daniel.maganto
+  namespace: default
+spec: 
+# Bad value
+  fullName: "Daniel Maganto"
+  email: "dani@dani.es"
+  roleType: "pepe"
+# Missing required field
+#  teams:
+#   - devops
+#   - azure

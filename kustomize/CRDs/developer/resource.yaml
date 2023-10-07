@@ -1,0 +1,12 @@
+apiVersion: dmaganto.infra/v1alpha1
+kind: Developer
+metadata:
+  name: daniel.maganto
+  namespace: default
+spec: 
+  fullName: "Daniel Maganto"
+  email: "dani@dani.es"
+  roleType: "devops"
+  teams:
+   - front
+   - claims

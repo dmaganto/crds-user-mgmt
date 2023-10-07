@@ -1,0 +1,10 @@
+apiVersion: dmaganto.infra/v1alpha1
+kind: Team
+metadata:
+  name: back
+  namespace: default
+spec: 
+  slackChannel: "back-team"
+  applications:
+   - document-service
+   - claim-service

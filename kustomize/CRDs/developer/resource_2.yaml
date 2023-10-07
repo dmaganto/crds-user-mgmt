@@ -1,0 +1,12 @@
+apiVersion: dmaganto.infra/v1alpha1
+kind: Developer
+metadata:
+  name: test.user
+  namespace: default
+spec: 
+  fullName: "Test User"
+  email: "test@test.infra"
+  roleType: "developer"
+  teams:
+   - front
+   - claims

@@ -1,0 +1,71 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: developers.dmaganto.infra
+spec:
+  group: dmaganto.infra
+  scope: Namespaced
+  names:
+    kind: Developer
+    singular: developer
+    plural: developers
+    shortNames:
+    - devs
+    categories:
+    - all
+  versions:
+  - name: v1alpha1
+    served: true
+    storage: true
+    additionalPrinterColumns:
+      - name: fullName
+        type: string
+        description: Full name
+        jsonPath: .spec.fullName
+      - name: roleType
+        type: string
+        jsonPath: .spec.roleType
+      - name: email
+        type: string
+        jsonPath: .spec.email
+      - name: Age
+        type: date
+        jsonPath: .metadata.creationTimestamp
+    schema:
+      openAPIV3Schema:
+        type: object
+        properties:
+          apiVersion:
+            type: string
+          kind:
+            type: string
+          metadata:
+            type: object
+          spec:
+            properties:
+              fullName:
+                type: string
+              roleType:
+                type: string
+                enum:
+                  - devops
+                  - developer
+                  - productowner
+                  - agilecoach
+                  - federateddevops
+              email: 
+                type: string
+              teams:
+                type: array
+                items:
+                  type: string
+                  enum:
+                    - claims
+                    - front
+                    - back
+            required:
+              - fullName
+              - roleType
+              - email
+              - teams
+            type: object
