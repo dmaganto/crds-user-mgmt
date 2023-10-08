@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: test-python
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: test-python-role
+rules:
+- apiGroups:
+  - "*"
+  resources:
+  - "*"
+  verbs:
+  - "*"
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: test-python-rb
+  namespace: default
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: test-python-role
+subjects:
+- kind: ServiceAccount
+  name: test-python
+  namespace: default
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: python-client-pod
+spec:
+  containers:
+  - name: python-client
+    image: python:3.8-slim-buster
+    command: ["sleep", "infinity"]
+  serviceAccountName: test-python
