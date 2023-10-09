@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: sa-python
+  name: sa-golang
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
-  name: sa-python-role
+  name: sa-golang-role
 rules:
 - apiGroups:
   - "*"
@@ -18,27 +18,16 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: sa-python-rb
+  name: sa-golang-rb
   namespace: default
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
-  name: sa-python-role
+  name: sa-golang-role
 subjects:
 - kind: ServiceAccount
-  name: sa-python
+  name: sa-golang
   namespace: default
----
-apiVersion: v1
-kind: Pod
-metadata:
-  name: python-client-pod
-spec:
-  containers:
-  - name: python-client
-    image: python:3.8-slim-buster
-    command: ["sleep", "infinity"]
-  serviceAccountName: sa-python
 ---
 apiVersion: v1
 kind: Pod
@@ -49,4 +38,4 @@ spec:
   - name: golang-client
     image: golang
     command: ["sleep", "infinity"]
-  serviceAccountName: sa-python
+  serviceAccountName: sa-golang

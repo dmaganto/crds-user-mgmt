@@ -2,9 +2,17 @@ import random
 import string
 from jinja2 import Template
 
-metadata_name = ''.join(random.choices(string.ascii_lowercase + string.digits, k=10))
-spec_fullname = ''.join(random.choices(string.ascii_uppercase + string.digits, k=10))
-spec_email = ''.join(random.choices(string.ascii_lowercase + string.digits, k=10)) + '@example.com'
+names = ["James", "Emma", "William", "Olivia", "Liam", "Ava", "Henry", "Isabella", "Alexander", "Sophia", "Benjamin", "Mia", "Michael", "Charlotte", "Daniel", "Amelia", "Matthew", "Evelyn", "David", "Abigail",
+         "Joseph", "Harper", "Andrew", "Grace", "John", "Elizabeth", "Samuel", "Lily", "Christopher", "Chloe", "Anthony", "Ella", "Robert", "Scarlett", "William", "Zoe", "Nicholas", "Natalie", "Jonathan", "Avery"]
+surnames = ["Smith", "Johnson", "Williams", "Brown", "Jones", "Miller", "Davis", "Garcia", "Rodriguez", "Martinez",
+            "Hernandez", "Lopez", "Gonzalez", "Perez", "Wilson", "Anderson", "Thomas", "Taylor", "Moore", "Jackson"]
+
+random_name = random.choice(names)
+random_surname = random.choice(surnames)
+
+metadata_name = f"{random_name.lower()}.{random_surname.lower()}"
+spec_fullname = f"{random_name} {random_surname}"
+spec_email = f"{random_name.lower()}.{random_surname.lower()}" + '@example.com'
 role_type = random.choice(['devops', 'developer', 'productowner', 'agilecoach', 'federateddevops'])
 teams = random.sample(['claims', 'front', 'back'], k=2)
 
