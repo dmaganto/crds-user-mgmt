@@ -42,6 +42,7 @@ Perform queries to filter all users that belongs to some team
 ```bash
 k get developers -o json | jq '.items[] | select(.spec.teams[] == "claims") | .metadata.name'
 k get applications -o json | jq '.items[] | select(.spec.team == "front") | .metadata.name'
+kubectl get squads -o json | jq -r '.items[] | select(.spec.developers[] == "dev1") | .metadata.name'
 ```
 
 Perform queries directly to the API (pod inside the cluster using serviceaccount):

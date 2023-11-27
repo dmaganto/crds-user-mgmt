@@ -1,0 +1,19 @@
+privileges-generic:
+  tribe: test
+
+  tribeLead:
+    - juan
+  tribeTechnicalLeads:
+    - pepe
+    - tobias
+
+  squads: 
+    testautomation7:
+      applications:
+        - testautomation
+        - testautomation2
+      approvers:
+        - approver1
+      developers:
+        - developer1
+        - developer2

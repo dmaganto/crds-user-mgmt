@@ -1,0 +1,26 @@
+---
+apiVersion: usermgmt.infra/v1alpha1
+kind: Tribe
+metadata:
+  name: {{ .Values.tribe }}
+  namespace: default
+spec:
+  {{- with .Values.tl }}
+  tl:
+  {{- toYaml . | nindent 4 }}
+  {{- end }}
+
+  {{- with .Values.ttl }}
+  ttl:
+  {{- toYaml . | nindent 4 }}
+  {{- end }}
+
+  {{- with .Values.agilecoaches }}
+  agilecoach:
+  {{- toYaml . | nindent 4 }}
+  {{- end }}
+
+  squads: 
+{{- range $squad, $content := .Values.squads }}
+    - {{ $squad }}
+{{- end }}

@@ -1,0 +1,43 @@
+{{- range $squad, $content := .Values.squads }}
+---
+apiVersion: usermgmt.infra/v1alpha1
+kind: Squad
+metadata:
+  name: {{ $squad }}
+  namespace: default
+spec: 
+  {{- with $content.applications }}
+  applications: 
+  {{- toYaml . | nindent 4 }}
+  {{- end }}
+
+  {{- with $content.managers }}
+  managers: 
+  {{- toYaml . | nindent 4 }}
+  {{- end }}
+
+  {{- with $content.developers }}
+  developers: 
+  {{- toYaml . | nindent 4 }}
+  {{- end }}
+
+  {{- with $content.federatedDevops }}
+  federatedDevops: 
+  {{- toYaml . | nindent 4 }}
+  {{- end }}
+
+  {{- with $content.devops }}
+  devops: 
+  {{- toYaml . | nindent 4 }}
+  {{- end }}
+
+  {{- with $content.incidentManagers }}
+  incidentManagers: 
+  {{- toYaml . | nindent 4 }}
+  {{- end }}
+
+  {{- with $content.onCall }}
+  onCall: 
+  {{- toYaml . | nindent 4 }}
+  {{- end }}
+{{- end }}

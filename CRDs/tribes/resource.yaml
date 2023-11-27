@@ -1,0 +1,12 @@
+apiVersion: usermgmt.infra/v1alpha1
+kind: Tribe
+metadata:
+  name: claims
+  namespace: default
+spec: 
+  squads:
+    - coco
+    - banana
+  ttl: dani-maganto
+  tl: alfredo-gil
+  agilecoach: david-ortiz

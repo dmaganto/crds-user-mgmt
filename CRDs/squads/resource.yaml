@@ -1,0 +1,14 @@
+apiVersion: usermgmt.infra/v1alpha1
+kind: Squad
+metadata:
+  name: charmander
+  namespace: default
+spec: 
+  applications:
+    - app1
+  managers: 
+    - manager1
+  federatedDevops:
+    - feddev1
+  developers:
+    - dev1

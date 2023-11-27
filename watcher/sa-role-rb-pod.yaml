@@ -19,7 +19,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: sa-golang-rb
-  namespace: default
+  namespace: privileges-azdir
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -27,7 +27,7 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: sa-golang
-  namespace: default
+  namespace: privileges-azdir
 ---
 apiVersion: v1
 kind: Pod
@@ -36,6 +36,9 @@ metadata:
 spec:
   containers:
   - name: golang-client
-    image: golang
-    command: ["sleep", "infinity"]
+    image: suaveyosi/k8s-watcher:0.0.2
+    command: ["./main"]
+    envFrom:
+    - secretRef:
+        name: slack
   serviceAccountName: sa-golang
